@@ -59,7 +59,12 @@ def get_open_positions_and_pnl():
     except Exception as e:
         print(f"Произошла ошибка при получении позиций: {e}")
 
-    return result, unrealized_pnl_sum/pos_sum
+    try:
+        ratio = unrealized_pnl_sum/pos_sum
+    except:
+        ratio = 0
+
+    return result, ratio
 
 
 def close_all_positions():
